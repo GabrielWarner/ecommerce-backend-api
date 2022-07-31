@@ -33,6 +33,11 @@ await Category.findOne({
 
 router.post('/', (req, res) => {
   // create a new category
+  Category.create(req.body).then(newCat=>{
+    res.json(newCat)
+}).catch(err=>{
+    res.status(500).json({msg:"oh noes! error!",err})
+})
 });
 
 router.put('/:id', (req, res) => {
