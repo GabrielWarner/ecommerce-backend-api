@@ -64,7 +64,21 @@ res.status(500).json({
 
 router.delete('/:id', (req, res) => {
   // delete a category by its `id` value
-
+  Category.destroy({
+    where:{
+        id:req.params.id
+    }
+    }).then(category=>{
+        if(!category){
+            return res.status(404).json({msg:"no such category!"})
+        }
+    res.json(category)
+}).catch(err=>{
+    res.status(500).json({
+        msg:"internal server error",
+        err
+    })
+})
 });
 
 module.exports = router;
