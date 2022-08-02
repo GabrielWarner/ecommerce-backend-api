@@ -60,6 +60,24 @@ router.post('/', (req, res) => {
 
 router.put('/:id', (req, res) => {
   // update a tag's name by its `id` value
+Tag.update({
+    tag_name:req.body.tag_name,
+},
+{
+where:{
+    id:req.params.id
+}
+}).then(category=>{
+    if(!category[0]){
+        return res.status(404).json({msg:"no such Tag or no change made!"})
+    }
+res.json(category)
+}).catch(err=>{
+res.status(500).json({
+    msg:"internal server error",
+    err
+})
+})
 });
 
 router.delete('/:id', (req, res) => {
