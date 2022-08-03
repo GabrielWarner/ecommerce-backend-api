@@ -3,7 +3,7 @@
 
 
 ## Description
-In this application I built a backend database that holds a stores products that are under seperate categorys. Each product has an associated tag name that is linked with a foreign key within sequelize. This application is using the dotenv npm package to pass in environment variables along with a combination of Express, MySQL2 and Sequelize to setup the server and database. 
+In this application I built a backend database that holds a stores products that are under seperate categories. Each product has an associated tag name that is linked with a foreign key within sequelize. This application is using the dotenv npm package to pass in environment variables along with a combination of Express, MySQL2 and Sequelize to setup the server and database. 
 
 ## Table of Contents
 
@@ -14,7 +14,7 @@ In this application I built a backend database that holds a stores products that
 - [Test Instructions](#test-instructions)
 - [Questions](#questions)
 ## Installation
-First login to your MySQL portal and run the command:
+In the file path of the project open the integrated terminal and login to your MySQL portal and run the command:
 
 ```md
 SOURCE db/schema.sql
@@ -30,7 +30,7 @@ node server.js
 
 ## Usage
 
-non
+none
 
 ## License
 
@@ -40,7 +40,7 @@ non
 
 ## Contributions
 
-nonee
+none
 
 ## Test Instructions
 
