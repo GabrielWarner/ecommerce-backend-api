@@ -36,26 +36,11 @@ router.get('/:id', (req, res) => {
 
 router.post('/', (req, res) => {
   // create a new tag
-  Tag.create(req.body)
-  .then((tag) => {
-    // if there's product tags, we need to create pairings to bulk create in the ProductTag model
-    if (req.body.tagIds.length) {
-      const productTagIdArr = req.body.tagIds.map((tag_id) => {
-        return {
-          product_id: product.id,
-          tag_id,
-        };
-      });
-      return ProductTag.bulkCreate(productTagIdArr);
-    }
-    // if no product tags, just respond
-    res.status(200).json(product);
-  })
-  .then((productTagIds) => res.status(200).json(productTagIds))
-  .catch((err) => {
-    console.log(err);
-    res.status(400).json(err);
-  });
+  Tag.create(req.body).then(newTag=>{
+    res.json(newTag)
+}).catch(err=>{
+    res.status(500).json({msg:"oh noes! error!",err})
+})
 });
 
 router.put('/:id', (req, res) => {
@@ -67,11 +52,11 @@ Tag.update({
 where:{
     id:req.params.id
 }
-}).then(category=>{
-    if(!category[0]){
+}).then(tag=>{
+    if(!tag[0]){
         return res.status(404).json({msg:"no such Tag or no change made!"})
     }
-res.json(category)
+res.json({tag})
 }).catch(err=>{
 res.status(500).json({
     msg:"internal server error",
